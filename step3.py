@@ -24,7 +24,8 @@ menu_chain = menu_prompt | llm | StrOutputParser()
 
 #chain 3 , Restaurant name + cuisine > slogan
 slogan_prompt = PromptTemplate.from_template(
-    "Create one catchy slogan for a {cuisine} restaurant called {restaurant_name}."
+    "Create one catchy slogan for a {cuisine} restaurant called {restaurant_name}." \
+    " Reply with only the slogan, plain text, no formatting."
 )
 slogan_chain = slogan_prompt | llm | StrOutputParser()
 
