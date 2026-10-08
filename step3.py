@@ -22,12 +22,20 @@ menu_prompt = PromptTemplate.from_template(
 )
 menu_chain = menu_prompt | llm | StrOutputParser()
 
+#chain 3 , Restaurant name + cuisine > slogan
+slogan_prompt = PromptTemplate.from_template(
+    "Create one catchy slogan for a {cuisine} restaurant called {restaurant_name}."
+)
+slogan_chain = slogan_prompt | llm | StrOutputParser()
+
 full_chain = (
     RunnablePassthrough.assign(restaurant_name=name_chain)
     .assign(menu_items=menu_chain)
+    .assign(slogan=slogan_chain)
 )
 result = full_chain.invoke({"cuisine":"Indian"})
 print(result)
 print("---------------")
 print("Name: ", result["restaurant_name"])
 print("Menu: ", result["menu_items"])
+print("Slogan: ", result["slogan"])
