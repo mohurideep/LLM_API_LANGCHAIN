@@ -19,7 +19,7 @@ def get_current_year() -> int:
 
 @tool
 def subtract(a: int, b: int) -> int:
-    """Subtract b from a and return the result."""
+    """Does stuff."""
     return a - b
 
 
