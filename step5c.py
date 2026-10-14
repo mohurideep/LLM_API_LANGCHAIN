@@ -32,9 +32,10 @@ def calculate_age(birth_year: int, birth_month: int, birth_day: int) -> int:
     """Calculate age based on birth date."""
     today = date.today()
     age = today.year - birth_year
-    birthdate_not_passed = (today.month, today.day) < (birth_month, birth_day)
+    if (today.month, today.day) < (birth_month, birth_day):
+        age -= 1
 
-    return age - birthdate_not_passed
+    return age
 
 @tool
 def search_wikipedia(query:str) -> str:
